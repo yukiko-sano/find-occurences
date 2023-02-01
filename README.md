@@ -42,9 +42,9 @@ Should the action check all files in the repo or only the changed ones
 
 **Default** `'false'`
 
-## `check-all-exclude`
+## `files-pattern`
 
-Files to exclude from the `check-all` check
+pattern of files to check from the `check-all` check
 
 **Default** `':!:node_modules/*'`
 
@@ -72,7 +72,7 @@ It is important to either split the files up between push/pull_request or make s
 # Check pull_request for occurences of console.log or console.error in (.ts, .js, .tsx, .jsx) files
 name: Check pull_request for occurences of console.log or console.error
 
-on: 
+on:
   pull_request:
     branches:
       - '**'
@@ -87,7 +87,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find occurences 
+      - name: Find occurences
         uses: omikkel/find-occurences@v1
         with:
           before: origin/${{ github.base_ref }}
@@ -101,7 +101,7 @@ jobs:
 # Check push for occurences of console.log or console.error in (.ts, .js, .tsx, .jsx) files
 name: Check push for occurences of console.log or console.error
 
-on: 
+on:
   push:
     branches:
       - '**'
@@ -116,7 +116,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find occurences 
+      - name: Find occurences
         uses: omikkel/find-occurences@v1
         with:
           before: ${{ github.event.before }}
@@ -130,7 +130,7 @@ jobs:
 # Check push and pull_request for occurences of console.log or console.error in (.ts, .js, .tsx, .jsx) files
 name: Check push and pull_request for occurences of console.log or console.error
 
-on: 
+on:
   push:
     branches:
       - '**'
@@ -150,7 +150,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find occurences 
+      - name: Find occurences
         uses: omikkel/find-occurences@v1
         with:
           before: ${{ github.event.before }}
@@ -167,7 +167,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Find occurences 
+      - name: Find occurences
         uses: omikkel/find-occurences@v1
         with:
           before: origin/${{ github.base_ref }}
